@@ -23,6 +23,8 @@ SOFTWARE.
 """
 
 
+import traceback
+
 from discord import Interaction, SelectOption, User, ButtonStyle
 from discord.ui import View, select, Select, button, Button
 from typing import Optional, List, Union
@@ -99,8 +101,9 @@ class Paginator:
 		self.pages = pages
 
 
-	async def start(self, embeded: Optional[bool] = False):
-		assert (self.pages)
+	async def start(self, embeded: Optional[bool] = False) -> None:
+		try: assert (self.pages)
+		except AssertionError: traceback.print_exc()
 
 		view = _view(self.interaction.user, self.pages, embeded)
 
