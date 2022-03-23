@@ -103,7 +103,7 @@ class Paginator:
 
 	async def start(self, embeded: Optional[bool] = False) -> None:
 		try: assert (self.pages)
-		except AssertionError: traceback.print_exc()
+		except AssertionError: raise ValueError("Provide pages bitch")
 
 		view = _view(self.interaction.user, self.pages, embeded)
 
