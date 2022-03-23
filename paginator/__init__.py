@@ -1,3 +1,3 @@
 __all__ = ['Paginator']
 
-from .main import Pagintor
+from .paginator import Pagintor
