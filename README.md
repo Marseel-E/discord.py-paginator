@@ -5,6 +5,9 @@
 # discord.py-paginator
 Buttons pagination template for discord bots.
 
+# Useage
+Download [this](paginator) folder and paste it in your project directory.
+
 # Example
 ```py
 import discord
