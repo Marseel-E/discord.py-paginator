@@ -1,4 +1,5 @@
-[![Discord server](https://discord.com/api/guilds/843994109366501376/embed.png)](https://discord.gg/DFDUpXJNdc) [![Discord.py](https://img.shields.io/badge/Discord.py-2.0-blue)](https://github.com/Rapptz/discord.py)
+[![Discord server](https://discord.com/api/guilds/843994109366501376/embed.png)](https://discord.gg/DFDUpXJNdc) [![Discord.py](https://img.shields.io/badge/Discord.py-2.0-blue)](https://github.com/Rapptz/discord.py)  
+
 # discord.py-paginator
 Buttons pagination template for discord bots.
 
@@ -12,4 +13,4 @@ Buttons pagination template for discord bots.
 ![quick-navigation-preview](images/quick-navigation.jpg)
 ![custom-children-preview](images/custom_children.jpg)
 
-[LICENSE](LICENSE)
+### :scroll: [LICENSE](LICENSE)
