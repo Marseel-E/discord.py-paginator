@@ -8,5 +8,5 @@ Buttons pagination template for discord bots.
 ```
 
 # Preview
-![layout-preview](images/layout.jpeg)
-![quick-navigation-preview](images/quick-navigation.jpeg)
+![layout-preview](images/layout.jpg)
+![quick-navigation-preview](images/quick-navigation.jpg)
