@@ -55,8 +55,8 @@ class _view(View):
 
 
 	async def update_children(self, interaction: Interaction):
-		self.next.disabled = True if (self.current_page + 1 == len(self.pages)) else False
-		self.previous.disabled = True if (self.current_page <= 0) else False
+		self.next.disabled = (self.current_page + 1 == len(self.pages))
+		self.previous.disabled = (self.current_page <= 0)
 
 		kwargs = {'content': self.pages[self.current_page]} if not (self.embeded) else {'embed': self.pages[self.current_page]}
 		kwargs['view'] = self
@@ -101,7 +101,18 @@ class Paginator:
 		self.pages = pages
 
 
-	async def start(self, embeded: Optional[bool] = False) -> None:
+	async def start(self, embeded: Optional[bool] = False, quick_navigation: bool = True) -> None:
+		"""Starts the paginator.
+
+		Parameters
+		-----------
+			'embeded' - Whether the pages are embeds or just text.
+			'quick_navigation' - Whether to include quick naviagtion or not.
+
+		Raises
+		-------
+			'Missing pages' - an empty list was passed to 'pages'.
+		"""
 		if not (self.pages): raise ValueError("Missing pages")
 
 		view = _view(self.interaction.user, self.pages, embeded)
@@ -109,11 +120,12 @@ class Paginator:
 		view.previous.disabled = True if (view.current_page <= 0) else False
 		view.next.disabled = True if (view.current_page + 1 >= len(self.pages)) else False
 
-		options = []
-		for index, page in enumerate(self.pages):
-			options.append(SelectOption(label=f"Page {index+1}", value=index))
+		if (quick_navigation):
+			options = []
+			for index, page in enumerate(self.pages):
+				options.append(SelectOption(label=f"Page {index+1}", value=index))
 
-		view.add_item(_select(options))
+			view.add_item(_select(options))
 
 		if (len(self.custom_children) > 0):
 			for child in self.custom_children:
