@@ -24,7 +24,8 @@ from paginator import Paginator
 
 @discord.app_commands.command()
 async def command_name(interaction: discord.Interaction):
-    pages = []; page_content = ""
+    pages = []
+    page_content = ""
     
     for i in range(15):
         if (i > 0) and (i % 5 == 0):
@@ -33,7 +34,7 @@ async def command_name(interaction: discord.Interaction):
 
         page_content += f"{i+1}. Item `{i}`\n"
 
-        if (page_content != "") and not (page_content in pages): pages.append(page_content)
+    if (page_content != "") and not (page_content in pages): pages.append(page_content)
         
     await Paginator(interaction, pages).start()
 ```
