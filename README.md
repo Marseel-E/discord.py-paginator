@@ -13,7 +13,7 @@ Install via [pip](https://pypi.org/project/discord.py-paginator/0.0.1/).
 py -m pip install -U discord.py-paginator
 ```
 ### or
-Download [this](paginator) folder and place it in your project directory. (or clone it with the following command)
+Download [this](src/paginator) folder and place it in your project directory. (or clone it with the following command)
 ```cmd
 git clone https://github.com/Marseel-E/discord.py-paginator
 ```
