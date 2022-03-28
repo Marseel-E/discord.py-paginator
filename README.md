@@ -11,6 +11,9 @@ Buttons pagination template for discord bots.
 Install via [pip](https://pypi.org/project/discord.py-paginator/).
 ```cmd
 py -m pip install -U discord.py-paginator
+
+:: for latest/unstable
+py -m pip install -U git+https://github.com/Marseel-E/discord.py-paginator
 ```
 ### or
 Download [this](src/paginator) folder and place it in your project directory. (or clone it with the following command)
