@@ -65,32 +65,32 @@ class _view(View):
 
 
 	@button(label="◀◀", style=ButtonStyle.gray, row=1)
-	async def first(self, button: Button, interaction: Interaction):
+	async def first(self, interaction: Interaction, button: Button):
 		self.current_page = 0
 
 		await self.update_children(interaction)
 
 	@button(label="◀", style=ButtonStyle.blurple, row=1)
-	async def previous(self, button: Button, interaction: Interaction):
+	async def previous(self, interaction: Interaction, button: Button):
 		self.current_page -= 1
 
 		await self.update_children(interaction)
 
 	@button(label="▶", style=ButtonStyle.blurple, row=1)
-	async def next(self, button: Button, interaction: Interaction):
+	async def next(self, interaction: Interaction, button: Button):
 		self.current_page += 1
 
 		await self.update_children(interaction)
 
 	@button(label="▶▶", style=ButtonStyle.gray, row=1)
-	async def last(self, button: Button, interaction: Interaction):
+	async def last(self, interaction: Interaction, button: Button):
 		self.current_page = len(self.pages) - 1
 
 		await self.update_children(interaction)
 
 
 	@button(label="Quit", style=ButtonStyle.red, row=1)
-	async def quit(self, button: Button, interaction: Interaction):
+	async def quit(self, interaction: Interaction, button: Button):
 		self.stop()
 
 
