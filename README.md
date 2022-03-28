@@ -1,3 +1,5 @@
+# :warning: AS OF (MONDAY, MARCH, 28TH, 2022, 7:51 AM EDT) IT WONT WORK IF YOU INSTALL IT FROM PIP BECAUSE THERES AN ISSUE IN THE CODE BUT I HAVEN'T PUBLISHED IT YET. THE ISSUE IS FIXED ON GITHUB SO IF YOU DOWNLOAD IT IT'LL WORK FINE, OTHERWISE THIS SHOULD BE FIXED IN ABOUT 5-6 HOURS.
+
 [![Discord server](https://discord.com/api/guilds/843994109366501376/embed.png)](https://discord.gg/DFDUpXJNdc)
 [![Discord.py](https://img.shields.io/badge/Discord.py-2.0-blue)](https://github.com/Rapptz/discord.py)
 [![Supported Python versions](https://img.shields.io/pypi/pyversions/discord.py.svg)](https://pypi.python.org/pypi/discord.py)
