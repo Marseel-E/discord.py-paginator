@@ -8,7 +8,7 @@
 Buttons pagination template for discord bots.
 
 # Useage
-Install via [pip](https://pypi.org/project/discord.py-paginator/0.0.1/).
+Install via [pip](https://pypi.org/project/discord.py-paginator/).
 ```cmd
 py -m pip install -U discord.py-paginator
 ```
