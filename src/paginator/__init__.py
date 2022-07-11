@@ -101,13 +101,14 @@ class Paginator:
 		self.pages = pages
 
 
-	async def start(self, embeded: Optional[bool] = False, quick_navigation: bool = True) -> None:
+	async def start(self, embeded: Optional[bool] = False, quick_navigation: bool = True , followup: Optional[bool] = False) -> None:
 		"""Starts the paginator.
 
 		Parameters
 		-----------
 			'embeded' - Whether the pages are embeds or just text.
 			'quick_navigation' - Whether to include quick naviagtion or not.
+			'followup' - Whether to use followup interactions. (if you need to defer!) 
 
 		Raises
 		-------
@@ -134,7 +135,10 @@ class Paginator:
 		kwargs = {'content': self.pages[view.current_page]} if not (embeded) else {'embed': self.pages[view.current_page]}
 		kwargs['view'] = view
 
-		await self.interaction.response.send_message(**kwargs)
+		if (followup):
+			await self.interaction.followup.send(**kwargs)
+		else:
+			await self.interaction.response.send_message(**kwargs)
 
 		await view.wait()
 		
