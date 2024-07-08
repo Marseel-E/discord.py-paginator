@@ -6,7 +6,7 @@ with open("README.md", 'r', encoding="utf-8") as fh:
 
 setuptools.setup(
     name="discord.py-paginator",
-    version="1.5.0",
+    version="1.5.1",
     author="Marseel Eeso",
     author_email="marseeleeso@gmail.com",
     description="A button & interactions pagination template for discord bots coded in discord.py",

@@ -26,7 +26,7 @@ __all__ = ['Paginator']
 
 
 from discord import Interaction, SelectOption, User, ButtonStyle
-from discord.ui import View, select, Select, button, Button
+from discord.ui import View, Select, button, Button
 from typing import Optional, List, Union
 
 
@@ -65,43 +65,47 @@ class _view(View):
 
 
 	@button(label="◀◀", style=ButtonStyle.gray, row=1)
-	async def first(self, interaction: Interaction, button: Button):
+	async def first(self, interaction: Interaction, _: Button):
 		self.current_page = 0
 
 		await self.update_children(interaction)
 
 	@button(label="◀", style=ButtonStyle.blurple, row=1)
-	async def previous(self, interaction: Interaction, button: Button):
+	async def previous(self, interaction: Interaction, _: Button):
 		self.current_page -= 1
 
 		await self.update_children(interaction)
 
 	@button(label="▶", style=ButtonStyle.blurple, row=1)
-	async def next(self, interaction: Interaction, button: Button):
+	async def next(self, interaction: Interaction, _: Button):
 		self.current_page += 1
 
 		await self.update_children(interaction)
 
 	@button(label="▶▶", style=ButtonStyle.gray, row=1)
-	async def last(self, interaction: Interaction, button: Button):
+	async def last(self, interaction: Interaction, _: Button):
 		self.current_page = len(self.pages) - 1
 
 		await self.update_children(interaction)
 
 
 	@button(label="Quit", style=ButtonStyle.red, row=1)
-	async def quit(self, interaction: Interaction, button: Button):
-		self.stop()
+	async def quit(self, interaction: Interaction, _: Button):
+		await interaction.delete_original_response()
 
 
 class Paginator:
-	def __init__(self, interaction: Interaction, pages: list, custom_children: Optional[List[Union[Button, Select]]] = []):
+	def __init__(self, 
+		interaction: Interaction, 
+		pages: list, 
+		custom_children: Optional[List[Union[Button, Select]]] = [],
+		content: Optional[str] = ""):
 		self.custom_children = custom_children
 		self.interaction = interaction
 		self.pages = pages
 
 
-	async def start(self, embeded: Optional[bool] = False, quick_navigation: bool = True , followup: Optional[bool] = False) -> None:
+	async def start(self, embeded: Optional[bool] = False, quick_navigation: bool = True, followup: Optional[bool] = False) -> None:
 		"""Starts the paginator.
 
 		Parameters
@@ -123,7 +127,7 @@ class Paginator:
 
 		if (quick_navigation):
 			options = []
-			for index, page in enumerate(self.pages):
+			for index, _ in enumerate(self.pages):
 				options.append(SelectOption(label=f"Page {index+1}", value=index))
 
 			view.add_item(_select(options))
@@ -132,7 +136,7 @@ class Paginator:
 			for child in self.custom_children:
 				view.add_item(child)
 
-		kwargs = {'content': self.pages[view.current_page]} if not (embeded) else {'embed': self.pages[view.current_page]}
+		kwargs = {'content': self.pages[view.current_page]} if not (embeded) else {'embed': self.pages[view.current_page], 'content': self.content}
 		kwargs['view'] = view
 
 		if (followup):
